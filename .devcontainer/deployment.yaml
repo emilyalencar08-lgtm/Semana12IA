@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: avatar-magico
+  labels:
+    app: avatar-magico
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: avatar-magico
+  template:
+    metadata:
+      labels:
+        app: avatar-magico
+    spec:
+      containers:
+      - name: avatar-magico
+        image: registry.k8s.io/hpa-example
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 200m
+          limits:
+            cpu: 500m
